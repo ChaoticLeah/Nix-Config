@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -132,8 +132,7 @@
       godot_4
       nodejs_20
       # neovim
-      inputs.unstablenixpkgs.packages."${pkgs.system}".neovim
-      # inputs.unstablenixpkgs.legacyPackages.${pkgs.system}.neovim
+      inputs.unstablenixpkgs.legacyPackages.${pkgs.system}.neovim
       prismlauncher
       git
       docker

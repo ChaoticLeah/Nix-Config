@@ -1,7 +1,7 @@
 {
   inputs = {
     # NixOS official package source, here using the nixos-23.11 branch
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     unstablenixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
