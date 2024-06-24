@@ -132,8 +132,7 @@
       godot_4
       nodejs_20
       # neovim
-      inputs.unstablenixpkgs.packages."${pkgs.system}".neovim
-      # inputs.unstablenixpkgs.legacyPackages.${pkgs.system}.neovim
+      inputs.unstablenixpkgs.legacyPackages.${pkgs.system}.neovim
       prismlauncher
       git
       docker
