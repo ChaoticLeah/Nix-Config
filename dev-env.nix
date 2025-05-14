@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   virtualisation.docker.enable = true;
   
@@ -30,7 +31,7 @@
 
     redis.servers."sharkey_redis".enable = true;
     redis.servers."sharkey_redis".port = 6379;
-  }
+  };
 
 
   environment.variables.PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";

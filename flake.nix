@@ -11,18 +11,16 @@
 
     pkgs = import nixpkgs {
       inherit system;
-      config.allowUnfree = true;
     };
 
     pkgs-unstable = import nixpkgs-unstable {
       inherit system;
-      config.allowUnfree = true;
     };
   in {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ ./configuration.nix ./dev-env.nix ];
+        modules = [ ./configuration.nix ];
         specialArgs = { inherit pkgs-unstable; };
       };
     };

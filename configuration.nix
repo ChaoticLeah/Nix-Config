@@ -7,6 +7,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./dev-env.nix
+      ./fonts.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -130,35 +132,30 @@
       vesktop
       vscode
       godot_4
-      nodejs_20
+      # nodejs_20
       fnm
-      corepack_20
-      postgresql_16
+      # corepack_20
       pgadmin4
-      prisma-engines
-      nodePackages_latest.prisma
+      # prisma-engines
+      # nodePackages_latest.prisma
       # neovim
       pkgs-unstable.neovim # from unstable
       beeper
       prismlauncher
-      git
+      # git
       docker
       blender
-      fluffychat
+      # fluffychat
       spotify
       hyfetch
-      zig
-      ripgrep
+      # zig
       git-credential-manager
-      gh
       yarn-berry
       element-desktop
       obsidian
       cargo
       rustup
       cargo-auditable-cargo-wrapper
-      gcc
-      fzf
       gimp
       qdirstat
       zapzap
@@ -185,6 +182,7 @@
     "electron-25.9.0"
   ];
 
+  nixpkgs.config.allowUnfree = true;
 
 # programs.neovim.plugins = [
 #   pkgs.vimPlugins.nvchad
@@ -198,8 +196,11 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-    # pkgs.neovim
+    neovim
     git
+    gcc
+    ripgrep
+    fzf
   ];
 
   environment.shellAliases = {
