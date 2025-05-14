@@ -22,7 +22,7 @@
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ ./configuration.nix ];
+        modules = [ ./configuration.nix ./dev-env.nix ];
         specialArgs = { inherit pkgs-unstable; };
       };
     };
