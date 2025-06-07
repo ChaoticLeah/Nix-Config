@@ -53,11 +53,15 @@
 		gnome-keyring
 		lua-language-server
 		rust-analyzer
+		zig
 	];
 
 	environment.shellAliases = {
 		rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#leah";
+		# Cleanup old generations
+		nix-gc = "sudo nix-collect-garbage -d";
 		v = "nvim .";
+		sudoedit="function _sudoedit(){sudo -e '$1';};_sudoedit";
 	};
 
 	#Change the cursor

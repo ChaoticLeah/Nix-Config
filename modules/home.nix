@@ -24,6 +24,7 @@
   imports = builtins.filter (x: x != null) [
 	./home/hyprland.nix
 	./home/neovim.nix
+	./home/waybar/waybar.nix
   ];
 
   # set cursor size and dpi for 4k monitor
