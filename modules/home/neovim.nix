@@ -35,5 +35,8 @@
 		#	};
 		#};
 	};
-	xdg.configFile.nvim.source = "./neovim"
+	home.file.".config/nvim" = { 
+		source = ./neovim;
+		recursive = true;
+	};
 }
