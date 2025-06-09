@@ -1,0 +1,56 @@
+
+@define-color base rgb(55, 55, 55);
+
+@define-color accent rgb(214, 227, 204);
+
+* {
+	font-family:  FiraCode Nerd Font Mono;
+}
+
+.modules-left > widget:first-child > * {
+	margin: 0 10px;
+}
+
+#waybar {
+	border-bottom: none;
+	padding: 3px;
+	background-color: transparent;
+}
+
+
+.modules-right * {
+	padding: 0 10px;
+}
+
+
+.modules-right .modules-left .modules-center * {
+	background-color: @base;
+	border-radius: 10px;
+}
+
+/* Pulseaudio module */
+/* Clock module */
+.horizontal.modules-right:dir(ltr) widget:nth-child(1) *,
+.horizontal.modules-right:dir(ltr) widget:nth-child(7) * {
+	color: @accent;
+}
+
+/* Network module */
+/* Tray module the class selector for tray is only there cuz otherwise the 3rd tray icon thinks it has to be diffrent, no clue why */
+.horizontal.modules-right:dir(ltr) widget:nth-child(6) *,
+.horizontal.modules-right:dir(ltr) widget:nth-child(2) *,
+#tray *  {
+	color: @accent;
+}
+
+
+.horizontal.modules-right:dir(ltr) widget:nth-child(1) * {
+	border-radius: 4px 0 0 4px;
+}
+
+#custom-power {
+	/*background-image: url('${builtins.path {path = ./resources/icons/demi-paw.svg;}}');*/
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}

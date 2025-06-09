@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
+
 	imports = [
 		./fonts.nix
 	];
@@ -54,6 +55,7 @@
 		lua-language-server
 		rust-analyzer
 		zig
+		pavucontrol
 	];
 
 	environment.shellAliases = {

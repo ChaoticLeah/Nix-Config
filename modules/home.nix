@@ -24,6 +24,7 @@
   imports = builtins.filter (x: x != null) [
 	./home/hyprland.nix
 	./home/neovim.nix
+	./home/gnome-settings.nix
 	./home/waybar/waybar.nix
   ];
 
@@ -119,6 +120,8 @@
     shellAliases = {
     };
   };
+  
+  programs.home-manager.enable = true;
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage

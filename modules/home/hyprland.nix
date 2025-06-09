@@ -79,6 +79,13 @@
         			"$mod, mouse:272, movewindow"
       			];
 
+			windowrulev2 = [
+				"float, class:org.pulseaudio.pavucontrol"
+				"size 40% 40%, class:org.pulseaudio.pavucontrol"
+				"move 60% 6%, class:org.pulseaudio.pavucontrol"
+				"opacity 0.8, class:org.pulseaudio.pavucontrol"
+			];
+
       			general = {
         			gaps_out = 7.5;
 				border_size = 1;
