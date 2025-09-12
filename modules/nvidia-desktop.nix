@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 # copied from: https://nixos.wiki/wiki/Nvidia#Modifying_NixOS_Configuration
-
+# This is no longer in use but kept around for now just-in-case it doesnt fix the graphics bugs as a fallback
 {
 
   # Enable OpenGL

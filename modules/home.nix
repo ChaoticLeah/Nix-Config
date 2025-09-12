@@ -22,6 +22,8 @@
 
 
   imports = builtins.filter (x: x != null) [
+    # ./docker/image-tool.nix - Docker stuff needs to be imported in common.nix (Outside of home manager) 
+
 	./home/hyprland.nix
 	./home/neovim.nix
 	./home/gnome-settings.nix
@@ -40,6 +42,9 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    vlc
+    lutris
+
     alacritty
     neofetch
     nnn # terminal file manager

@@ -9,6 +9,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/hardware/nvidia-desktop.nix
+      ../../modules/common.nix
+      ../../modules/common-pc-laptop.nix
     ];
 
   # Bootloader.

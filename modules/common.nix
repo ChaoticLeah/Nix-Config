@@ -1,13 +1,11 @@
 { config, pkgs, inputs, ... }:
-
+# For common root stuff that trancends between server, desktop, and other things.
 {
 
 	imports = [
-		./fonts.nix
-
-        ./docker/image-tool.nix
+        ./fonts.nix
         ./drawing.nix
-	];
+    ];
 
 	nix.settings = {
 		experimental-features = ["flakes"];
@@ -37,11 +35,6 @@
 		variant = "";
 	};
 
-	services.displayManager.sddm.enable = true;
-	services.displayManager.sddm.wayland.enable = true;
-	programs.hyprland.enable = true;
-   
-
 	programs.neovim = {
 		enable = true;
 		vimAlias = true;
@@ -63,21 +56,20 @@
     security.pam.services.login.enableGnomeKeyring = true;
 
 	environment.systemPackages = with pkgs; [
-		kitty
-		firefox
-		vlc
-		hyprshot
-		rofi-wayland
-		libnotify
+        firefox
+        kitty
+        hyprshot
+        libnotify
+        pavucontrol
+        wl-clipboard
+        rofi-wayland
+
 		htop
 		gnome-keyring
 		lua-language-server
 		rust-analyzer
 		zig
-		pavucontrol
-		wl-clipboard
         inputs.compose2nix.packages.x86_64-linux.default
-        lutris
         busybox
 	];
 
