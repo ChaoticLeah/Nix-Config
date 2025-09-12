@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/nvidia-desktop.nix
+      ../../modules/hardware/nvidia-desktop.nix
     ];
 
   # Bootloader.

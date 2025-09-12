@@ -28,6 +28,7 @@
       			];
 
       			bind = [
+				"$mod, RETURN, exec, rofi -show drun"
         			"$mod, Q, exec, $terminal"
        				"$mod, C, killactive"
         			"$mod, M, exit"

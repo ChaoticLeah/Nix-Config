@@ -4,6 +4,9 @@
 
 	imports = [
 		./fonts.nix
+
+        ./docker/image-tool.nix
+        ./drawing.nix
 	];
 
 	nix.settings = {
@@ -37,17 +40,33 @@
 	services.displayManager.sddm.enable = true;
 	services.displayManager.sddm.wayland.enable = true;
 	programs.hyprland.enable = true;
+   
 
 	programs.neovim = {
 		enable = true;
+		vimAlias = true;
 	};
+
+    programs.git = {
+        enable = true;
+        package = pkgs.gitFull;
+        config.credential.helper = "libsecret";
+    };
+
+    programs.java = {
+        enable = true;
+        package = pkgs.openjdk17;
+    };
+
+    services.gnome.gnome-keyring.enable = true;
+    
+    security.pam.services.login.enableGnomeKeyring = true;
 
 	environment.systemPackages = with pkgs; [
 		kitty
 		firefox
 		vlc
 		hyprshot
-		git
 		rofi-wayland
 		libnotify
 		htop
@@ -56,6 +75,10 @@
 		rust-analyzer
 		zig
 		pavucontrol
+		wl-clipboard
+        inputs.compose2nix.packages.x86_64-linux.default
+        lutris
+        busybox
 	];
 
 	environment.shellAliases = {
@@ -63,7 +86,7 @@
 		# Cleanup old generations
 		nix-gc = "sudo nix-collect-garbage -d";
 		v = "nvim .";
-		sudoedit="function _sudoedit(){sudo -e '$1';};_sudoedit";
+		sudovim="sudo -E nvim .";
 	};
 
 	#Change the cursor

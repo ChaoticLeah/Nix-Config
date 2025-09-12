@@ -25,6 +25,8 @@
 	./home/hyprland.nix
 	./home/neovim.nix
 	./home/gnome-settings.nix
+	./home/rofi.nix
+	./home/syncthing.nix
 	./home/waybar/waybar.nix
   ];
 
@@ -33,6 +35,8 @@
     "Xcursor.size" = 16;
     "Xft.dpi" = 172;
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -72,6 +76,10 @@
     strace # system call monitoring
     ltrace # library call monitoring
     lsof # list open files
+
+    obsidian
+    godot
+    aseprite
 
   ];
 
