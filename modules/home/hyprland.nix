@@ -3,9 +3,15 @@
 {
     services.hyprpaper = {
         enable = true;
-        settings.wallpaper = [
-            "./wallpapers/wallpaper1.png"
-        ];
+        settings = {
+            preload = [
+                "${./wallpapers/wallpaper1.png}"
+            ];
+
+            wallpaper = [
+                ",${./wallpapers/wallpaper1.png}"
+            ];
+        };
     };
     
 
@@ -103,8 +109,8 @@
       			};
 
       			decoration = {
-				rounding = 10;
-				rounding_power = 10;
+				rounding = 5;
+				rounding_power = 5;
 				# Blur amt = blur_size * blur_passes (over 5 blurpasses produces artifacts tho)
 				#blur = {
 				#	enabled = true;

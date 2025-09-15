@@ -17,6 +17,8 @@
   # networking.wireless.enable  = true;
   
   environment.systemPackages = with pkgs; [
+    hyprpaper
+    rofi-power-menu
     firefox
     kitty
     hyprshot
