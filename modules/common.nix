@@ -69,12 +69,13 @@
 		lua-language-server
 		rust-analyzer
 		zig
+        cargo
         inputs.compose2nix.packages.x86_64-linux.default
         busybox
 	];
 
 	environment.shellAliases = {
-		rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#leah";
+		rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#";
 		# Cleanup old generations
 		nix-gc = "sudo nix-collect-garbage -d";
 		v = "nvim .";

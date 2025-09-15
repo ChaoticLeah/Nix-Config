@@ -18,6 +18,7 @@
 			];
 
 			modules-right = [
+                "tray"
 				"pulseaudio"
 				"network"
 				"clock"

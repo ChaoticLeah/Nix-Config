@@ -24,6 +24,7 @@
         			"swww-daemon"
         			"waybar"
         			"kdeconnect-indicator"
+                    "nm-applet"
         			(if hostName == "yuriTab" then "nm-applet&blueman-applet" else null)
       			];
 

@@ -28,11 +28,18 @@
 				};
 			})
 
+            ({ config, ...}: {
+                home-manager.extraSpecialArgs = {
+                  inherit (config.networking) hostName;
+                };
+            })
+
+
 			#./modules/common.nix
 		];
 		
 		nixosConfigurations = {
-			leah = nixpkgs.lib.nixosSystem {
+			hyprleah = nixpkgs.lib.nixosSystem {
 				specialArgs = { inherit inputs; };
 				modules = self.commonModules ++ [
 					./hosts/leah/config.nix
@@ -40,6 +47,17 @@
 						networking.hostName = "hyprleah";
 					})
 				];
+            };
+
+			smolleah = nixpkgs.lib.nixosSystem {
+				specialArgs = { inherit inputs; };
+				modules = self.commonModules ++ [
+					./hosts/smolleah/config.nix
+					({ ... }: {
+						networking.hostName = "smolleah";
+					})
+				];
+
 			};
 		};
 

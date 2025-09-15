@@ -13,6 +13,8 @@
   security.pam.services.login.enableGnomeKeyring = true;
 
   services.udisks2.enable = true;
+
+  # networking.wireless.enable  = true;
   
   environment.systemPackages = with pkgs; [
     firefox
