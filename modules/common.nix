@@ -8,7 +8,7 @@
     ];
 
 	nix.settings = {
-		experimental-features = ["flakes"];
+		experimental-features = ["flakes" "nix-command"];
 	};
 
 	networking.networkmanager.enable = true;
@@ -62,7 +62,6 @@
         libnotify
         pavucontrol
         wl-clipboard
-        rofi-wayland
 
 		htop
 		gnome-keyring

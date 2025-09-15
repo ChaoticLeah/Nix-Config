@@ -23,7 +23,7 @@
     libnotify
     pavucontrol
     wl-clipboard
-    rofi-wayland
+    rofi
 
     #pmount
     #udisks2
