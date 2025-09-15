@@ -12,7 +12,8 @@
     
   security.pam.services.login.enableGnomeKeyring = true;
 
-
+  services.udisks2.enable = true;
+  
   environment.systemPackages = with pkgs; [
     firefox
     kitty
@@ -21,6 +22,10 @@
     pavucontrol
     wl-clipboard
     rofi-wayland
+
+    #pmount
+    #udisks2
+    #udiskie
   ];
 
 }

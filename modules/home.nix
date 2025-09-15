@@ -40,8 +40,15 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  services.udiskie = {
+    enable = true;
+    notify = true;
+    automount = true;
+  };
+
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    udiskie
     vlc
     lutris
 
@@ -85,7 +92,7 @@
     obsidian
     godot
     aseprite
-
+    postman
   ];
 
 
