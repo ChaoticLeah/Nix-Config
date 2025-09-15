@@ -1,6 +1,14 @@
 { pkgs, lib, config, hostName, ...}:
 
 {
+    services.hyprpaper = {
+        enable = true;
+        settings.wallpaper = [
+            "./wallpapers/wallpaper1.png"
+        ];
+    };
+    
+
 	wayland.windowManager.hyprland = {
 		enable = true;
 
@@ -21,10 +29,11 @@
       			exec-once = [
         			"dunst"
         			"systemctl --user start hyprpolkitagent"
-        			"swww-daemon"
+        			#"swww-daemon" - Could also be used for wallpapers?
         			"waybar"
         			"kdeconnect-indicator"
                     "nm-applet"
+                    "hyprpaper"
         			(if hostName == "yuriTab" then "nm-applet&blueman-applet" else null)
       			];
 
