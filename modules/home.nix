@@ -49,6 +49,10 @@
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     udiskie
+    networkmanagerapplet
+    networkmanager
+    kdePackages.plasma-nm
+
     vlc
     lutris
 

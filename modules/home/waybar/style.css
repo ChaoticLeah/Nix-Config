@@ -1,56 +1,149 @@
+* {
+    border: none;
+    font-family: "InputMono Nerd Font", "Symbols Nerd Font Mono", "Symbols Nerd Font", "Font Awesome 6 Free", "Font Awesome 5 Free", "Font Awesome 5 Brands", monospace;
+    font-size: 13px;
+    color: #ffffff;
+    border-radius: 20px;
+}
 
-@define-color base rgb(55, 55, 55);
+window {
+	/*font-weight: bold;*/
+}
+window#waybar {
+    	background: rgba(0, 0, 0, 0);
+}
 
-@define-color accent rgb(214, 227, 204);
+@define-color base rgb (181, 171, 156);
+@define-color base2 rgb (44, 57, 48);
+
+@define-color button rgb (44, 57, 48);
+@define-color highlighted rgb (83, 110, 92);
+
+@define-color warning rgb (235, 223, 171);
+@define-color error rgb (248, 147, 139);
 
 * {
-	font-family:  FiraCode Nerd Font Mono;
-}
-
-.modules-left > widget:first-child > * {
-	margin: 0 10px;
-}
-
-#waybar {
-	border-bottom: none;
-	padding: 3px;
-	background-color: transparent;
-}
-
-
-.modules-right * {
-	padding: 0 10px;
-}
-
-
-.modules-right .modules-left .modules-center * {
-	background-color: @base;
 	border-radius: 10px;
 }
 
-/* Pulseaudio module */
-/* Clock module */
-.horizontal.modules-right:dir(ltr) widget:nth-child(1) *,
-.horizontal.modules-right:dir(ltr) widget:nth-child(7) * {
-	color: @accent;
+/*-----module groups----*/
+.modules-right {
+        background-color: @button;
+    	margin: 2px 10px 2px 0;
+}
+.modules-center {
+	    background-color: @button;
+    	margin: 2px 0 2px 0;
+}
+.modules-left {
+    	margin: 2px 0 2px 5px;
+	    background-color: @button;
+}
+/*-----modules indv----*/
+#workspaces {
+	padding: 2px;
 }
 
-/* Network module */
-/* Tray module the class selector for tray is only there cuz otherwise the 3rd tray icon thinks it has to be diffrent, no clue why */
-.horizontal.modules-right:dir(ltr) widget:nth-child(6) *,
-.horizontal.modules-right:dir(ltr) widget:nth-child(2) *,
-#tray *  {
-	color: @accent;
+#workspaces button {
+    	padding: 1px 5px;
+    	background-color: transparent;
 }
 
-
-.horizontal.modules-right:dir(ltr) widget:nth-child(1) * {
-	border-radius: 4px 0 0 4px;
+#workspaces button:hover {
+    	box-shadow: inherit;
+	    background-color: @highlighted;
 }
 
+#workspaces button.focused {
+	    background-color: @highlighted;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#custom-volume,
+#custom-media,
+#tray,
+#mode,
+#custom-power,
+#custom-menu,
+#idle_inhibitor {
+	    padding: 0 10px;
+}
+#mode {
+    	color: #cc3436;
+	    font-weight: bold;
+}
 #custom-power {
-	/*background-image: url('${builtins.path {path = ./resources/icons/demi-paw.svg;}}');*/
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
+    	border-radius: 100%;
+    	margin: 5px 5px;
+    	padding: 1px 1px 1px 6px;
 }
+/*-----Indicators----*/
+#idle_inhibitor.activated {
+    	color: #2dcc36;
+}
+#pulseaudio.muted {
+    	color: #cc3436;
+}
+
+#battery.charging {
+    	color: #ff0000;
+}
+#battery.warning:not(.charging) {
+	    color: @warning;
+}
+#battery.critical:not(.charging) {
+    	color: @error;
+}
+#temperature.critical {
+    	color: #cc3436;
+}
+
+
+/* Style the entire menu popup */
+menu {
+    background-color: @base2;
+    color: #B5E8E0; /* Text color */
+    padding: 5px;
+}
+
+/* Style all menu items */
+menuitem {
+    padding: 8px 20px;
+    color: #B5E8E0;
+    background-color: transparent;
+}
+
+/* Highlight on hover */
+menuitem:hover {
+    background-color: @highlighted;
+    color: #F8BD96;
+}
+
+/* Style specific menu items by ID */
+#shutdown {
+    color: #F28FAD;
+    font-weight: bold;
+}
+#reboot {
+    color: #ABE9B3;
+}
+#suspend {
+    color: #FAE3B0;
+}
+#hibernate {
+    color: #96CDFB;
+}
+
+/*-----Colors----*/
+/*
+ *rgba(0,85,102,1),#005566 --> Indigo(dye)
+ *rgba(0,43,51,1),#002B33 --> Dark Green 
+ *rgba(0,153,153,1),#009999 --> Persian Green 
+ *
+ */
+

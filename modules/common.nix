@@ -81,6 +81,10 @@
 		sudovim="sudo -E nvim .";
 	};
 
+    nix.gc.automatic = true;
+    nix.gc.dates = "weekly";
+    nix.gc.options = "--delete-older-than 7d";
+
 	#Change the cursor
 
 #	cursor.package = inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default;

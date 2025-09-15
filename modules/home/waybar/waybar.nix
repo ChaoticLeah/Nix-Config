@@ -25,23 +25,29 @@
 			];
 
 			pulseaudio = {
-    				on-click = "pavucontrol";
+    			on-click = "pavucontrol";
+                format = "{icon} {volume}%";
+                format-muted = "";
+                format-icons = {
+                    default = ["" "" ""]; # Low, Medium, High
+                    muted = "";
+                };
   			};
 
   			network = {
 				format-ethernet = "󰈀";
    				tooltip-format = "{ifname} via {gwaddr}/{cidr}";
-    				format-linked = "{ifname} (No IP)";
-    				format-disconnected = "Disconnected ⚠";
+    			format-linked = "{ifname} (No IP)";
+    			format-disconnected = "Disconnected ⚠";
    				format-wifi = "{essid} ({signalStrength}%) ";
+                on-click = "nm-connection-editor";
   			};
 
 
 
 			"custom/power" = {
-				    format = "   ";
+ 		            format= " ";
 				    on-click = "rofi -show power-menu -modi power-menu:rofi-power-menu -theme-str 'window {width: 18em;} listview {lines: 6;}'";
-
 			};
 
 		}];
