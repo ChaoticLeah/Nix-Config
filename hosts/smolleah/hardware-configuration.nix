@@ -24,6 +24,13 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/mnt/windows" = {
+     device = "/dev/disk/by-uuid/8A0E4D450E4D2B8F";
+     fsType = "ntfs";
+     options = [ "rw" "uid=1000" "gid=100" "umask=022" ];
+   };
+
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/b86bbbdb-f114-4836-bc5f-6c53eab5a9aa"; }
     ];

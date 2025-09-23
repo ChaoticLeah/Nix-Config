@@ -9,6 +9,8 @@
   programs.hyprland.enable = true;
   
   # networking.wireless.enable  = true;
+
+  boot.supportedFilesystems = [ "ntfs" ];
   
   environment.systemPackages = with pkgs; [
     hyprpaper
