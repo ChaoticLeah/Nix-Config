@@ -5,8 +5,8 @@
 	imports = [
         ./fonts.nix
         ./drawing.nix
-        ./sops.nix
-        ./tailscale.nix
+        ./services/sops.nix
+        ./services/tailscale.nix
     ];
 
 	nix.settings = {
@@ -57,6 +57,7 @@
     
     security.pam.services.login.enableGnomeKeyring = true;
 
+    services.udisks2.enable = true;
     
 	environment.systemPackages = with pkgs; [
         firefox

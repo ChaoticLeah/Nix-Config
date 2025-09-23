@@ -94,6 +94,10 @@
         			"$mod, mouse_down, workspace, e+1"
         			"$mod, mouse_up, workspace, e-1"
         			"$mod, mouse:272, movewindow"
+                    # Volume keys using wpctl (PipeWire)
+                    ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+                    ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+                    ",XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       			];
 
 			windowrulev2 = [
