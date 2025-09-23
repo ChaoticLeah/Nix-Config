@@ -5,6 +5,8 @@
 	imports = [
         ./fonts.nix
         ./drawing.nix
+        ./sops.nix
+        ./tailscale.nix
     ];
 
 	nix.settings = {
@@ -55,6 +57,7 @@
     
     security.pam.services.login.enableGnomeKeyring = true;
 
+    
 	environment.systemPackages = with pkgs; [
         firefox
         kitty
@@ -71,6 +74,8 @@
         cargo
         inputs.compose2nix.packages.x86_64-linux.default
         busybox
+        tailscale
+        sops
 	];
 
 	environment.shellAliases = {

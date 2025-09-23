@@ -20,12 +20,17 @@
     hyprpaper
     rofi-power-menu
     firefox
+    librewolf
     kitty
     hyprshot
     libnotify
     pavucontrol
     wl-clipboard
     rofi
+    beeper
+    vscode
+
+    jetbrains.idea-ultimate
 
     #pmount
     #udisks2

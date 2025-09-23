@@ -14,6 +14,7 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        sops-nix.url = "github:Mic92/sops-nix";
 
 		self.submodules = true;
 	};
@@ -34,7 +35,7 @@
                 };
             })
 
-
+            inputs.sops-nix.nixosModules.sops
 			#./modules/common.nix
 		];
 		
