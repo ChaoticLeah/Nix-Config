@@ -23,6 +23,16 @@
 			monitor = DP-1, 2560x1440, 0x0, 1
 
 			monitor = HDMI-A-1, 1920x1080, 2560x0, 1
+
+            
+            env = GDK_SCALE,1
+            env = GDK_DPI_SCALE,1
+            env = QT_AUTO_SCREEN_SCALE_FACTOR,1
+            env = QT_SCALE_FACTOR,1
+            env = QT_QPA_PLATFORM,wayland
+            env = GDK_BACKEND,wayland
+            env = MOZ_ENABLE_WAYLAND,1
+            env = XCURSOR_SIZE,24
 		'' else "");
 
     		settings = {

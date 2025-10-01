@@ -26,7 +26,7 @@
 
   fileSystems."/mnt/windows" = {
      device = "/dev/disk/by-uuid/8A0E4D450E4D2B8F";
-     fsType = "ntfs";
+     fsType = "ntfs-3g";
      options = [ "rw" "uid=1000" "gid=100" "umask=022" ];
    };
 

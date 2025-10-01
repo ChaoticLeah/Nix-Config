@@ -31,6 +31,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     	vesktop
+        lmstudio
 	];
   };
 

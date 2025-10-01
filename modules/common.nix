@@ -60,6 +60,7 @@
     services.udisks2.enable = true;
     
 	environment.systemPackages = with pkgs; [
+        ntfs3g
         firefox
         kitty
         hyprshot
