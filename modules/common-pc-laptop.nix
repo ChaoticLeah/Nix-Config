@@ -1,7 +1,9 @@
 { config, pkgs, inputs, ... }:
 # Common root stuff for any pc/laptop installs
 {
-  imports = [];
+  imports = [
+    ./games/mycurrentgames.nix
+  ];
     
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
@@ -29,7 +31,9 @@
     rofi
     beeper
     vscode
-
+    feishin
+    element-desktop
+    
     jetbrains.idea-ultimate
 
     #pmount

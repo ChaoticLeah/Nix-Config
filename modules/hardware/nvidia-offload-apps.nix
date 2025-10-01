@@ -13,5 +13,6 @@ in
     (GPUOffloadApp steam "steam")
     (GPUOffloadApp lmstudio "lmstudio")
     (GPUOffloadApp aseprite "aseprite")
+    (GPUOffloadApp vintagestory "vintagestory")
   ];
 }

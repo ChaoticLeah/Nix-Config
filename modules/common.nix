@@ -7,6 +7,8 @@
         ./drawing.nix
         ./services/sops.nix
         ./services/tailscale.nix
+
+        ./development/git.nix
     ];
 
 	nix.settings = {
@@ -42,20 +44,10 @@
 		vimAlias = true;
 	};
 
-    programs.git = {
-        enable = true;
-        package = pkgs.gitFull;
-        config.credential.helper = "libsecret";
-    };
-
     programs.java = {
         enable = true;
         package = pkgs.openjdk17;
     };
-
-    services.gnome.gnome-keyring.enable = true;
-    
-    security.pam.services.login.enableGnomeKeyring = true;
 
     services.udisks2.enable = true;
     
