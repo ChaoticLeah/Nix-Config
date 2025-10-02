@@ -50,7 +50,7 @@
         			"kdeconnect-indicator"
                     "nm-applet"
                     "hyprpaper"
-        			(if hostName == "yuriTab" then "nm-applet&blueman-applet" else null)
+        			"nm-applet & blueman-applet"
       			];
 
       			bind = [

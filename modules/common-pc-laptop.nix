@@ -16,11 +16,16 @@
 
   programs.kdeconnect.enable = true;
 
+  hardware.bluetooth.enable = true;
+
+  services.blueman.enable = true;
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   
   environment.systemPackages = with pkgs; [
     hyprpaper
     rofi-power-menu
+    overskride
     firefox
     librewolf
     kitty
@@ -33,6 +38,8 @@
     vscode
     feishin
     element-desktop
+    bambu-studio
+    teams-for-linux
     
     jetbrains.idea-ultimate
 
