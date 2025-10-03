@@ -3,8 +3,13 @@
 {
   imports = [
     ./games/mycurrentgames.nix
-    ./services/jellyfin.nix
-    ./services/immich.nix
+
+
+
+    #./services/postgres.nix
+    #./services/jellyfin.nix
+    #./services/immich.nix
+    #./services/redis.nix
   ];
     
   services.displayManager.sddm.enable = true;

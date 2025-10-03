@@ -3,7 +3,9 @@
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_16;
-    port = 5433;  # system postgres runs here
+    settings = {
+        port = 5432;
+    };
     ensureDatabases = [ "immich" ];
     ensureUsers = [
       {

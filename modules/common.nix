@@ -78,6 +78,7 @@
 		nix-gc = "sudo nix-collect-garbage -d";
 		v = "nvim .";
 		sudovim="sudo -E nvim .";
+        edit-secrets = "sudo SOPS_AGE_KEY_FILE=/etc/age/keys.txt sops /etc/nixos/secrets.yaml";
 	};
 
     nix.gc.automatic = true;
