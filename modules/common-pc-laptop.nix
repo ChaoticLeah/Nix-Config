@@ -3,6 +3,8 @@
 {
   imports = [
     ./games/mycurrentgames.nix
+    ./services/jellyfin.nix
+    ./services/immich.nix
   ];
     
   services.displayManager.sddm.enable = true;
