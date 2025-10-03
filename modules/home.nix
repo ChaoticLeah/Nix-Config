@@ -128,6 +128,22 @@
 
     shellAliases = {
     };
+
+    # This sets readline/inputrc options
+    historyControl = [ "ignoredups" "ignorespace" ];
+    historyIgnore = [ "ls" "cd" "exit" ];
+
+    shellOptions = [
+      "histappend"
+      "cmdhist"
+      "checkwinsize"
+    ];
+
+    initExtra = ''
+      # Arrow keys search history based on typed prefix
+      bind '"\e[A": history-search-backward'
+      bind '"\e[B": history-search-forward'
+    '';
   };
   
   programs.home-manager.enable = true;
