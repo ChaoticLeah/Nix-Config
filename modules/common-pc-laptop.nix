@@ -1,9 +1,11 @@
-{ config, pkgs, inputs, ... }:
 # Common root stuff for any pc/laptop installs
+{ config, pkgs, inputs, ... }:
+let
+  fusion360 = import ./programs/fusion360.nix { inherit pkgs; };
+in
 {
   imports = [
     ./games/mycurrentgames.nix
-
 
 
     #./services/postgres.nix
@@ -45,16 +47,21 @@
     vscode
     feishin
     element-desktop
+    lmms
     bambu-studio
     teams-for-linux
+    #(import ./programs/fusion360.nix { inherit pkgs; })
     
     jetbrains.idea-ultimate
+#   For work *dies*
+    n8n
+
 
     #pmount
     #udisks2
     #udiskie
 
-    (writeShellScriptBin "nividia-time" ''
+    (writeShellScriptBin "nvidia-time" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
     export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
     export __GLX_VENDOR_LIBRARY_NAME=nvidia
@@ -62,6 +69,7 @@
     exec "$@"
     '')
   ];
+
 
 
 
