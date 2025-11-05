@@ -2,16 +2,27 @@
 # For common root stuff that trancends between server, desktop, and other things.
 {
 
-	imports = [
+    imports = [
         ./fonts.nix
         ./drawing.nix
         ./services/sops.nix
         ./services/tailscale.nix
-
+	
+	./nixvim
         ./development/git.nix
     ];
 
-	nix.settings = {
+    nixpkgs.overlays = [ (final: prev: {
+    inherit (prev.lixPackageSets.stable)
+        nixpkgs-review
+        nix-eval-jobs
+        nix-fast-build
+        colmena;
+    }) ];
+
+    nix.package = pkgs.lixPackageSets.stable.lix;
+
+    nix.settings = {
 		experimental-features = ["flakes" "nix-command"];
 	};
 
@@ -39,10 +50,10 @@
 		variant = "";
 	};
 
-	programs.neovim = {
-		enable = true;
-		vimAlias = true;
-	};
+	#programs.neovim = {
+	#	enable = true;
+	#	vimAlias = true;
+	#};
 
     programs.java = {
         enable = true;

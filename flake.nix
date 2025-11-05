@@ -2,7 +2,8 @@
 	description = "Flake :3";
 	
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+	        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+		nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 		
 		home-manager = {
 			url = "github:nix-community/home-manager";
@@ -16,12 +17,20 @@
 
         sops-nix.url = "github:Mic92/sops-nix";
 
-		self.submodules = true;
-	};
 
-	outputs = { self, nixpkgs, ... }@inputs: {
+
+	nixvim = {
+          url = "github:nix-community/nixvim";
+          inputs.nixpkgs.follows = "nixpkgs";
+	};
+		#self.submodules = true;
+	};
+	
+
+	outputs = { self, nixpkgs, nixpkgs-stable, ... }@inputs: {
 	
 		commonModules = [
+			inputs.nixvim.nixosModules.nixvim
 			inputs.home-manager.nixosModules.home-manager
 			({ config, ...} : {
 				home-manager.extraSpecialArgs = {
@@ -51,7 +60,7 @@
             };
 
 			smolleah = nixpkgs.lib.nixosSystem {
-				specialArgs = { inherit inputs; };
+				specialArgs = { inherit inputs; inherit nixpkgs-stable; };
 				modules = self.commonModules ++ [
 					./hosts/smolleah/config.nix
 					({ ... }: {

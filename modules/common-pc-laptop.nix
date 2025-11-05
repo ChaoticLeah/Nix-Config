@@ -1,5 +1,5 @@
 # Common root stuff for any pc/laptop installs
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, nixpkgs-stable, inputs, system, ... }:
 let
   fusion360 = import ./programs/fusion360.nix { inherit pkgs; };
 in
@@ -13,6 +13,8 @@ in
     #./services/immich.nix
     #./services/redis.nix
   ];
+
+
     
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
@@ -31,7 +33,7 @@ in
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     hyprpaper
     rofi-power-menu
     overskride
@@ -47,8 +49,8 @@ in
     vscode
     feishin
     element-desktop
-    lmms
-    bambu-studio
+    #lmms
+    #bambu-studio
     teams-for-linux
     #(import ./programs/fusion360.nix { inherit pkgs; })
     
@@ -68,7 +70,13 @@ in
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec "$@"
     '')
-  ];
+  ])
+  ++ 
+  (with nixpkgs-stable.legacyPackages.${pkgs.system}; [
+    lmms
+  ]);
+
+
 
 
 
