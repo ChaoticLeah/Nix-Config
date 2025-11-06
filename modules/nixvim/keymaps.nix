@@ -138,5 +138,14 @@
       __raw = "function() vim.diagnostic.open_float(nil, { focus = false }) end";
     };
   }
+
+  {
+    mode = "n";
+    key = "<leader>f";
+    action = ''
+      <cmd>lua require("conform").format({ async = true, lsp_fallback = true })<CR>
+    '';
+    options.desc = "Format file with Conform";
+  }
 ]
 

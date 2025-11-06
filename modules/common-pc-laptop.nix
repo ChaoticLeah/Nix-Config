@@ -5,7 +5,7 @@ let
 in
 {
   imports = [
-    ./games/mycurrentgames.nix
+    ./games
 
 
     #./services/postgres.nix
@@ -75,10 +75,5 @@ in
   (with nixpkgs-stable.legacyPackages.${pkgs.system}; [
     lmms
   ]);
-
-
-
-
-
 
 }
