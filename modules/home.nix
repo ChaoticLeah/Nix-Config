@@ -7,11 +7,8 @@
 
 
   imports = builtins.filter (x: x != null) [
-    # ./docker/image-tool.nix - Docker stuff needs to be imported in common.nix (Outside of home manager) 
   ./home/terminal.nix
-    #./home/git.nix
 	./home/hyprland.nix
-	./home/neovim.nix
 	./home/gnome-settings.nix
 	./home/rofi.nix
 	./home/syncthing.nix

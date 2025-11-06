@@ -6,16 +6,8 @@ in
 {
   imports = [
     ./games
-
-
-    #./services/postgres.nix
-    #./services/jellyfin.nix
-    #./services/immich.nix
-    #./services/redis.nix
   ];
 
-
-    
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
 
