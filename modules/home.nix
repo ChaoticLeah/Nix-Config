@@ -7,6 +7,7 @@
 
 
   imports = builtins.filter (x: x != null) [
+  ./home/git.nix
   ./home/terminal.nix
 	./home/hyprland.nix
 	./home/gnome-settings.nix

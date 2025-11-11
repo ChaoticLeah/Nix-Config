@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./games
+    ./services/portals.nix
   ];
 
   services.displayManager.sddm.enable = true;
@@ -49,6 +50,7 @@ in
     jetbrains.idea-ultimate
 #   For work *dies*
     n8n
+    libreoffice
 
 
     #pmount
