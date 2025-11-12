@@ -9,6 +9,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/common.nix
+      ../../modules/services/nginx
+      ../../modules/services/gotosocial.nix
     ];
 
   # Bootloader.
@@ -66,6 +68,12 @@
   #	  "leah" = import ../../modules/home.nix;
   # };
   #};
+
+  services.openssh.enable = true;
+  services.openssh.settings.PermitRootLogin = "prohibit-password";
+  services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "client";
+
 
 
   # This value determines the NixOS release from which the default

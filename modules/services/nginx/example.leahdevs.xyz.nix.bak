@@ -1,0 +1,16 @@
+{ config, pkgs, lib, ... }:
+
+{
+  virtualHosts."meow.leahdevs.xyz" = {
+    enableACME = true;       # request Let's Encrypt certificate
+    forceSSL = true;         # redirect HTTP → HTTPS
+    root = "/var/www/meow";  # must exist
+    locations."/" = {
+      return = "200 '<html><body>It works!</body></html>'";
+      extraConfig = ''
+        default_type text/html;
+      '';
+    };
+  };
+}
+
