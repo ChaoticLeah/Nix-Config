@@ -3,8 +3,6 @@
 {
 
   imports = [
-    ./fonts.nix
-    ./drawing.nix
     ./services/sops.nix
     ./services/tailscale.nix
     ./nixvim
@@ -57,19 +55,8 @@
   services.udisks2.enable = true;
   
   environment.systemPackages = with pkgs; [
-    ntfs3g
-    firefox
-    kitty
-    hyprshot
-    libnotify
-    pavucontrol
-    wl-clipboard
     htop
     gnome-keyring
-    lua-language-server
-    rust-analyzer
-    zig
-    cargo
     inputs.compose2nix.packages.x86_64-linux.default
     busybox
     tailscale

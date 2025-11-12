@@ -60,6 +60,15 @@
 					})
 				];
 			};
+      server-nixos = nixpkgs.lib.nixosSystem {
+				specialArgs = { inherit inputs; inherit nixpkgs-stable; };
+				modules = self.commonModules ++ [
+					./hosts/server-nixos/config.nix
+					({ ... }: {
+						networking.hostName = "server-nixos";
+					})
+				];
+			};
 		};
 	};
 }

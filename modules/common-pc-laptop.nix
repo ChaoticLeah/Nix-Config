@@ -5,7 +5,9 @@ let
 in
 {
   imports = [
+    ./fonts.nix
     ./games
+    ./drawing.nix
     ./services/portals.nix
   ];
 
@@ -27,6 +29,11 @@ in
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   
   environment.systemPackages = (with pkgs; [
+    lua-language-server
+    rust-analyzer
+    zig
+    cargo
+    ntfs3g
     hyprpaper
     rofi-power-menu
     overskride
@@ -51,6 +58,7 @@ in
 #   For work *dies*
     n8n
     libreoffice
+    kdePackages.dolphin
 
 
     #pmount
