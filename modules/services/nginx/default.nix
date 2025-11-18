@@ -23,8 +23,9 @@ in
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
   };
-
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  # 42420 is vintage story
+  networking.firewall.allowedTCPPorts = [ 80 443 5657 42420 ];
+  networking.firewall.allowedUDPPorts = [ 27015 25565 42420 ];
 
   security.acme = {
     acceptTerms = true;

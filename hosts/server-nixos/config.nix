@@ -11,6 +11,9 @@
       ../../modules/common.nix
       ../../modules/services/nginx
       ../../modules/services/gotosocial.nix
+      ../../modules/services/pufferpanel.nix
+      ../../modules/services/couchdb.nix
+      ../../modules/services/searxng.nix
     ];
 
   # Bootloader.
@@ -40,7 +43,16 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    #  openjdk17
+    nix-ld
   ];
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    openjdk17
+    openjdk21
+  ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
