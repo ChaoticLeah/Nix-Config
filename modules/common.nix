@@ -12,7 +12,6 @@
     ./services/tailscale.nix
     ./nixvim
     ./development/git.nix
-    ./development/git-hooks.nix
   ];
 
   nixpkgs.overlays = [
