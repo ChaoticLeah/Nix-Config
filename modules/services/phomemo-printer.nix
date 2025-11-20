@@ -1,9 +1,8 @@
-{ config, pkgs, ...}: 
+{ config, pkgs, ... }:
 {
-    services.printing = {
-        enable = true;
-        drivers = [ pkgs.phomemo-tools ];
-    };
-    
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.phomemo-tools ];
+  };
 
 }

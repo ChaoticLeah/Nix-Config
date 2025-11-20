@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = [ pkgs.vintagestory ];
@@ -7,4 +7,3 @@
   #   "dotnet-runtime-7.0.20"
   # ];
 }
-

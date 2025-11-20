@@ -4,7 +4,5 @@
   illuminate = {
     enable = true;
 
-    
   };
 }
-

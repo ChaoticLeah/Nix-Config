@@ -6,7 +6,7 @@
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [nvidia-vaapi-driver];
+    extraPackages = with pkgs; [ nvidia-vaapi-driver ];
   };
 
   # cuda stuffs
@@ -15,7 +15,7 @@
   ];
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
 
@@ -48,4 +48,3 @@
     package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 }
-

@@ -1,4 +1,8 @@
-{ stdenv, fetchFromGitHub, python310 }:
+{
+  stdenv,
+  fetchFromGitHub,
+  python310,
+}:
 
 stdenv.mkDerivation rec {
   pname = "phomemo-tools";
@@ -25,4 +29,3 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/vivier/phomemo-tools";
   };
 }
-

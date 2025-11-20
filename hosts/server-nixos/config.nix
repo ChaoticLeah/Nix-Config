@@ -5,16 +5,16 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/common.nix
-      ../../modules/services/nginx
-      ../../modules/services/gotosocial.nix
-      ../../modules/services/pufferpanel.nix
-      ../../modules/services/couchdb.nix
-      ../../modules/services/searxng.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../modules/common.nix
+    ../../modules/services/nginx
+    ../../modules/services/gotosocial.nix
+    ../../modules/services/pufferpanel.nix
+    ../../modules/services/couchdb.nix
+    ../../modules/services/searxng.nix
+  ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -26,13 +26,15 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.leah = {
     isNormalUser = true;
     description = "leah";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [ ];
   };
 
   # Allow unfree packages
@@ -41,8 +43,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
     #  openjdk17
     nix-ld
   ];
@@ -52,7 +54,6 @@
     openjdk17
     openjdk21
   ];
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -73,7 +74,6 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-
   #home-manager = {
   #	backupFileExtension = ".bak";
   # users = {
@@ -85,8 +85,6 @@
   services.openssh.settings.PermitRootLogin = "prohibit-password";
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "client";
-
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

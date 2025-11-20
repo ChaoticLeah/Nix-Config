@@ -3,8 +3,7 @@
 {
   programs.nixvim = {
     extraPlugins = [
-      pkgs.vimPlugins.hover-nvim 
+      pkgs.vimPlugins.hover-nvim
     ];
   };
 }
-

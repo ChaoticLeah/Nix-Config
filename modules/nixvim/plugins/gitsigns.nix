@@ -30,7 +30,7 @@
           text = "┆";
         };
       };
-        
+
       watch_gitdir = {
         follow_files = true;
       };

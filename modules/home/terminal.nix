@@ -39,8 +39,15 @@
     };
 
     # This sets readline/inputrc options
-    historyControl = [ "ignoredups" "ignorespace" ];
-    historyIgnore = [ "ls" "cd" "exit" ];
+    historyControl = [
+      "ignoredups"
+      "ignorespace"
+    ];
+    historyIgnore = [
+      "ls"
+      "cd"
+      "exit"
+    ];
 
     shellOptions = [
       "histappend"

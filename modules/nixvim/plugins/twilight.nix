@@ -4,7 +4,5 @@
   twilight = {
     enable = true;
 
-    
   };
 }
-

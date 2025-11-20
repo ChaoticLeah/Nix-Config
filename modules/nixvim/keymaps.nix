@@ -39,39 +39,57 @@
     action = "<cmd>Telescope find_files<CR>";
     key = "<leader>ff";
     mode = "n";
-    options = { noremap = true; silent = true; };
+    options = {
+      noremap = true;
+      silent = true;
+    };
   }
   {
     action = "<cmd>Telescope live_grep<CR>";
     key = "<leader>fg";
     mode = "n";
-    options = { noremap = true; silent = true; };
+    options = {
+      noremap = true;
+      silent = true;
+    };
   }
   {
     action = "<cmd>Telescope buffers<CR>";
     key = "<leader>fb";
     mode = "n";
-    options = { noremap = true; silent = true; };
+    options = {
+      noremap = true;
+      silent = true;
+    };
   }
   {
     action = "<cmd>Telescope oldfiles<CR>";
     key = "<leader>fr";
     mode = "n";
-    options = { noremap = true; silent = true; };
+    options = {
+      noremap = true;
+      silent = true;
+    };
   }
   # Documentation & help
   {
     action = "<cmd>Telescope man_pages<CR>";
     key = "<leader>dm";
     mode = "n";
-    options = { noremap = true; silent = true; };
+    options = {
+      noremap = true;
+      silent = true;
+    };
   }
   # UI & appearance
   {
     action = "<cmd>Telescope colorscheme<CR>";
     key = "<leader>tc";
     mode = "n";
-    options = { noremap = true; silent = true; };
+    options = {
+      noremap = true;
+      silent = true;
+    };
   }
 
   # NeoTree -----------------------
@@ -97,10 +115,13 @@
     action = "<cmd>LazyGit<CR>";
     key = "<leader>gs";
     mode = "n";
-    options = { noremap = true; silent = true; };
+    options = {
+      noremap = true;
+      silent = true;
+    };
   }
   # Undotree -----------------------------
-  { 
+  {
     mode = "n";
     key = "<C-u>";
     action = "<cmd>UndotreeToggle<CR>";
@@ -119,15 +140,15 @@
   {
     mode = "n";
     action = ''
-        lua require("harpoon"):list():add()
-      '';
+      lua require("harpoon"):list():add()
+    '';
     key = "<leader>a";
   }
   {
     mode = "n";
     action = ''
-        lua require("harpoon.ui").toggle_quick_menu(require("harpoon"):list())
-      '';
+      lua require("harpoon.ui").toggle_quick_menu(require("harpoon"):list())
+    '';
     key = "<leader>l";
   }
   # open errors -----------------------------
@@ -148,4 +169,3 @@
     options.desc = "Format file with Conform";
   }
 ]
-

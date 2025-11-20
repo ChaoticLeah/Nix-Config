@@ -1,4 +1,4 @@
-{ config, pkgs, ...}: 
+{ config, pkgs, ... }:
 {
   sops = {
     age.keyFile = "/etc/age/keys.txt";

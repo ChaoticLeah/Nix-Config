@@ -4,7 +4,5 @@
   todo-comments = {
     enable = true;
 
-    
   };
 }
-

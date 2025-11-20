@@ -1,4 +1,5 @@
-{pkgs, inputs, ...}: {
+{ pkgs, inputs, ... }:
+{
   xdg.portal = {
     enable = true;
 
@@ -8,6 +9,6 @@
     ];
   };
 
-  programs.hyprland.portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  programs.hyprland.portalPackage =
+    inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 }
-

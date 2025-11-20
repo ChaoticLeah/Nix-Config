@@ -1,4 +1,4 @@
-{ config, pkgs, ...}: 
+{ config, pkgs, ... }:
 {
   services.redis = {
     enable = true;

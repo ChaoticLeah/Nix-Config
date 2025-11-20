@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 {
-# File tree
-	neo-tree = {
+  # File tree
+  neo-tree = {
     enable = true;
     settings = {
       popup_border_style = "rounded";
@@ -23,7 +23,7 @@
           hideDotfiles = false;
           hideGitignored = false;
         };
-      };  
+      };
       window = {
         width = 40;
         height = 15;
@@ -36,4 +36,3 @@
     enable = true;
   };
 }
-

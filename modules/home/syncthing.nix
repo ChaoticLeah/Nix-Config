@@ -7,7 +7,7 @@
 
     settings = {
       devices = {
-        "leahs-syncthing" = { 
+        "leahs-syncthing" = {
           id = "7QIB32T-BC76N53-A2SLPH3-7UXWICB-IFNSRO7-RBKELD3-T3YU52C-ZWPU3Q7";
           addresses = [ "tcp://192.168.2.36:8384" ];
         };
@@ -29,4 +29,3 @@
     };
   };
 }
-

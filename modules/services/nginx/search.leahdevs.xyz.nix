@@ -1,8 +1,13 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   virtualHosts."search.leahdevs.xyz" = {
-    enableACME = true;       # request Let's Encrypt certificate
-    forceSSL = true;         # redirect HTTP → HTTPS
+    enableACME = true; # request Let's Encrypt certificate
+    forceSSL = true; # redirect HTTP → HTTPS
 
     # The web root is not needed for proxy, but Nginx requires a root
     root = "/var/www/search";

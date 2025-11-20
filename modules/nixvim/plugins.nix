@@ -1,13 +1,26 @@
-{ config, lib, pkgs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   pluginsDir = ./plugins;
   files = builtins.attrNames (builtins.readDir pluginsDir);
   nixFiles = builtins.filter (f: builtins.match ".*\\.nix" f != null && f != "default.nix") files;
-  baseSets = map (file: import (pluginsDir + "/${file}") { inherit config; inherit pkgs; inherit lib;}) nixFiles;
-  basePlugins = builtins.foldl' (acc: s: acc // s) {} baseSets;
+  baseSets = map (
+    file:
+    import (pluginsDir + "/${file}") {
+      inherit config;
+      inherit pkgs;
+      inherit lib;
+    }
+  ) nixFiles;
+  basePlugins = builtins.foldl' (acc: s: acc // s) { } baseSets;
 in
-basePlugins // {
+basePlugins
+// {
   treesitter = {
     enable = true;
   };
@@ -32,4 +45,3 @@ basePlugins // {
     };
   };
 }
-

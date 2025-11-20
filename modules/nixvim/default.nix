@@ -1,22 +1,29 @@
-{ config, pkgs, lib, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
-  plugins = import ./plugins.nix { inherit config; inherit pkgs; inherit lib;};
+  plugins = import ./plugins.nix {
+    inherit config;
+    inherit pkgs;
+    inherit lib;
+  };
   keymaps = import ./keymaps.nix { inherit config; };
   extraVim = builtins.readFile ./extra.vim;
 in
 {
-  imports = lib.filter
-    (n: 
-      (lib.strings.hasSuffix ".nix" n) 
-#      && (!(builtins.elem (baseNameOf n) excludedFiles))
-    )
-    (lib.filesystem.listFilesRecursive ./imports);
+  imports = lib.filter (
+    n: (lib.strings.hasSuffix ".nix" n)
+    #      && (!(builtins.elem (baseNameOf n) excludedFiles))
+  ) (lib.filesystem.listFilesRecursive ./imports);
 
   programs.nixvim = {
     enable = true;
     plugins = plugins;
     keymaps = keymaps;
-    
+
     extraPackages = [
       pkgs.ripgrep
       pkgs.fd
@@ -43,7 +50,6 @@ in
       tabstop = 2;
       shiftwidth = 2;
     };
-
 
     globals = {
       mapleader = " ";

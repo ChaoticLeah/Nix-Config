@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 # For common root stuff that trancends between server, desktop, and other things.
 {
 
@@ -7,20 +12,27 @@
     ./services/tailscale.nix
     ./nixvim
     ./development/git.nix
+    ./development/git-hooks.nix
   ];
 
-  nixpkgs.overlays = [ (final: prev: {
-  inherit (prev.lixPackageSets.stable)
-      nixpkgs-review
-      nix-eval-jobs
-      nix-fast-build
-      colmena;
-  })];
+  nixpkgs.overlays = [
+    (final: prev: {
+      inherit (prev.lixPackageSets.stable)
+        nixpkgs-review
+        nix-eval-jobs
+        nix-fast-build
+        colmena
+        ;
+    })
+  ];
 
   nix.package = pkgs.lixPackageSets.stable.lix;
 
   nix.settings = {
-    experimental-features = ["flakes" "nix-command"];
+    experimental-features = [
+      "flakes"
+      "nix-command"
+    ];
   };
 
   networking.networkmanager.enable = true;
@@ -48,12 +60,12 @@
   };
 
   programs.java = {
-      enable = true;
-      package = pkgs.openjdk17;
+    enable = true;
+    package = pkgs.openjdk17;
   };
 
   services.udisks2.enable = true;
-  
+
   environment.systemPackages = with pkgs; [
     htop
     gnome-keyring
@@ -61,10 +73,12 @@
     busybox
     tailscale
     sops
+    nixfmt-rfc-style
+    treefmt
   ];
 
   environment.shellAliases = {
-    rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#";
+    rebuild = "sudo nixos-rebuild switch --flake .#";
     # Cleanup old generations
     nix-gc = "sudo nix-collect-garbage -d";
     v = "nvim .";

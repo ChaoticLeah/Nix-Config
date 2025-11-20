@@ -1,5 +1,7 @@
 # Run fusion360 to open and fusion360-uninstall to uninstall
-{ pkgs ? import <nixpkgs> {} }:
+{
+  pkgs ? import <nixpkgs> { },
+}:
 
 let
   fusionSetup = pkgs.fetchurl {
@@ -11,7 +13,12 @@ pkgs.stdenv.mkDerivation {
   pname = "fusion360";
   version = "latest";
 
-  buildInputs = [ pkgs.wineWowPackages.stable pkgs.winetricks pkgs.curl pkgs.coreutils ];
+  buildInputs = [
+    pkgs.wineWowPackages.stable
+    pkgs.winetricks
+    pkgs.curl
+    pkgs.coreutils
+  ];
 
   unpackPhase = "true";
 
@@ -67,4 +74,3 @@ pkgs.stdenv.mkDerivation {
     maintainers = with maintainers; [ ];
   };
 }
-

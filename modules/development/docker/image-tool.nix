@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   imageToolStack = import ./docker-image-tool.nix {
@@ -10,4 +15,3 @@ in
 
   virtualisation.oci-containers.backend = "podman"; # or "podman"
 }
-

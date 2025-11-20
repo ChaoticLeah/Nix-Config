@@ -9,7 +9,7 @@
           __unkeyed-1 = "neo-tree";
         };
       };
-      
+
       sections = {
         lualine_a = [ "mode" ];
         lualine_b = [ "branch" ];
@@ -43,7 +43,9 @@
               '';
             };
             icon = "";
-            color = { fg = "#ffffff"; };
+            color = {
+              fg = "#ffffff";
+            };
           }
 
           # Git blame
@@ -69,7 +71,9 @@
                 end
               '';
             };
-            color = { fg = "#b0b0b0"; };
+            color = {
+              fg = "#b0b0b0";
+            };
           }
 
           "encoding"
@@ -83,4 +87,3 @@
     };
   };
 }
-

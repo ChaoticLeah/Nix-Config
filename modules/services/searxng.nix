@@ -5,7 +5,7 @@
     # Contains the secret
     environmentFile = "/home/leah/.searxng.env";
     redisCreateLocally = true;
-    
+
     # Rate limiting
     limiterSettings = {
       real_ip = {
@@ -69,5 +69,5 @@
       ];
     };
   };
-  users.groups.searx.members = ["nginx"];
+  users.groups.searx.members = [ "nginx" ];
 }

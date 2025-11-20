@@ -1,8 +1,13 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   virtualHosts."games.leahdevs.xyz" = {
-    enableACME = true;       # request Let's Encrypt certificate
-    forceSSL = true;         # redirect HTTP → HTTPS
+    enableACME = true; # request Let's Encrypt certificate
+    forceSSL = true; # redirect HTTP → HTTPS
 
     # Nginx still requires a root even if proxying
     root = "/var/www/pufferpanel";
@@ -39,4 +44,3 @@
     };
   };
 }
-

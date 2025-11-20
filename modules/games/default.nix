@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
 
@@ -7,4 +7,3 @@
     ./vintagestory.nix
   ];
 }
-

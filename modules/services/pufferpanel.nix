@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   systemd.services.pufferpanel.serviceConfig = {
     DynamicUser = lib.mkForce false;
@@ -6,7 +11,6 @@
     Group = "pufferpanel";
   };
 
-  
   users.users.pufferpanel = {
     isSystemUser = true;
     group = "pufferpanel";
@@ -15,7 +19,7 @@
     createHome = true;
   };
 
-  users.groups.pufferpanel = {};
+  users.groups.pufferpanel = { };
 
   services.pufferpanel = {
     enable = true;
@@ -32,15 +36,14 @@
       #PUFFER_PANEL_DATABASE_LOG = "true";
     };
 
-    extraPackages = with pkgs; [ 
+    extraPackages = with pkgs; [
       nix-ld
       coreutils
       #openjdk17
       #openjdk21
       openjdk25
     ];
-      
-      
+
   };
 
   # volumes = [

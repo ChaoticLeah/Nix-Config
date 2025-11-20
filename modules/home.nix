@@ -5,15 +5,14 @@
   home.username = "leah";
   home.homeDirectory = "/home/leah";
 
-
   imports = builtins.filter (x: x != null) [
-  ./home/git.nix
-  ./home/terminal.nix
-	./home/hyprland.nix
-	./home/gnome-settings.nix
-	./home/rofi.nix
-	./home/syncthing.nix
-	./home/waybar/waybar.nix
+    ./home/git.nix
+    ./home/terminal.nix
+    ./home/hyprland.nix
+    ./home/gnome-settings.nix
+    ./home/rofi.nix
+    ./home/syncthing.nix
+    ./home/waybar/waybar.nix
   ];
 
   # set cursor size and dpi for 4k monitor
@@ -68,7 +67,7 @@
     hugo # static site generator
     glow # markdown previewer in terminal
 
-    btop  # replacement of htop/nmon
+    btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
 

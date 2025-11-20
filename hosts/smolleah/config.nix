@@ -5,13 +5,13 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../modules/hardware/nvidia-laptop.nix
-      ../../modules/common.nix
-      ../../modules/common-pc-laptop.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../modules/hardware/nvidia-laptop.nix
+    ../../modules/common.nix
+    ../../modules/common-pc-laptop.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -26,16 +26,18 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.leah = {
     isNormalUser = true;
     description = "leah";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    	vesktop
-        lmstudio
-	];
+      vesktop
+      lmstudio
+    ];
   };
 
   # Allow unfree packages
@@ -44,8 +46,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -67,15 +69,13 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-
   home-manager = {
-  	backupFileExtension = ".bak";
-	#extraSpecialArgs = { inherit inputs; };
-	users = {
-		"leah" = import ../../modules/home.nix;
-	};
+    backupFileExtension = ".bak";
+    #extraSpecialArgs = { inherit inputs; };
+    users = {
+      "leah" = import ../../modules/home.nix;
+    };
   };
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
