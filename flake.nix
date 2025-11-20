@@ -105,6 +105,15 @@
             )
           ];
         };
+	lyco-reco = nixpkgs.lib.nixosSystem {
+				specialArgs = { inherit inputs; };
+				modules = self.commonModules ++ [
+					./hosts/lyco-reco/config.nix
+					({ ... }: {
+						networking.hostName = "lyco-reco";
+					})
+				];
+			};
       };
     };
 }

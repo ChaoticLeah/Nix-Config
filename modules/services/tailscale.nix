@@ -36,10 +36,7 @@ in
         exit 0
       fi
 
-      authkey=$(
-        ${pkgs.sops}/bin/sops -d --output-type json ${secretsFile} | \
-        ${pkgs.jq}/bin/jq -r .tailscale_secret
-      )
+      authkey=tskey-auth-kj2Xo2jp7521CNTRL-FhYAPdKpRu17h8jRD1AHv1sCNBaJ8zKYL
 
       ${pkgs.tailscale}/bin/tailscale up -authkey "$authkey"
     '';
