@@ -29,6 +29,7 @@
           "tray"
           "pulseaudio"
           "network"
+          "battery"
           "clock"
           "custom/power"
         ];

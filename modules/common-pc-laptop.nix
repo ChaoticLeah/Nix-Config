@@ -70,6 +70,7 @@ in
       libreoffice
       kdePackages.dolphin
       darktable
+      bambu-studio
 
       #pmount
       #udisks2

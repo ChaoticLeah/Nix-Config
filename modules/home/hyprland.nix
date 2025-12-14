@@ -120,10 +120,6 @@
         ",XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ];
 
-      bindm = [
-        "$mod, mouse:272, movewindow"
-      ];
-
       windowrulev2 = [
         "float, class:org.pulseaudio.pavucontrol"
         "size 40% 40%, class:org.pulseaudio.pavucontrol"

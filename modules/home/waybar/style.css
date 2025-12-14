@@ -124,6 +124,13 @@ menuitem:hover {
     color: #F8BD96;
 }
 
+
+menuitem.focused {
+	background-color: @highlighted;
+  color: #F8BD96;
+}
+
+
 /* Style specific menu items by ID */
 #shutdown {
     color: #F28FAD;

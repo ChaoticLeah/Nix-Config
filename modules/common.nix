@@ -88,4 +88,8 @@
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
   nix.gc.options = "--delete-older-than 7d";
+
+  # For smarter dev enviorment stuff
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 }
