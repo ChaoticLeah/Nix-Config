@@ -53,7 +53,7 @@
       "$vol-down" = "pactl set-sink-volume @DEFAULT_SINK@ -5%";
 
       exec-once = [
-        "dunst"
+        "swaynotificationcenter"
         "systemctl --user start hyprpolkitagent"
         #"swww-daemon" - Could also be used for wallpapers?
         "waybar"

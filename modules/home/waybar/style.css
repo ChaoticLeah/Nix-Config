@@ -1,8 +1,9 @@
 * {
     border: none;
-    font-family: "InputMono Nerd Font", "Symbols Nerd Font Mono", "Symbols Nerd Font", "Font Awesome 6 Free", "Font Awesome 5 Free", "Font Awesome 5 Brands", monospace;
+    font-family: "Symbols Nerd Font", "Font Awesome 6 Free", "Font Awesome 5 Free", "Font Awesome 5 Brands", monospace;
+    /*font-family: "Input Nerd Font", "Symbols Nerd Font", "Symbols Nerd Font", "Font Awesome 6 Free", "Font Awesome 5 Free", "Font Awesome 5 Brands", monospace;*/
     font-size: 13px;
-    color: #ffffff;
+    color: #EBFFD9;
     border-radius: 20px;
 }
 
@@ -55,7 +56,7 @@ window#waybar {
 }
 
 #workspaces button.focused {
-	    background-color: @highlighted;
+	    background-color: @warning;
 }
 
 #clock,

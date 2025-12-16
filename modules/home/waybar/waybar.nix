@@ -27,12 +27,20 @@
 
         modules-right = [
           "tray"
+          "custom/swaync"
           "pulseaudio"
           "network"
+          "mpris"
           "battery"
           "clock"
           "custom/power"
         ];
+
+        "custom/swaync" = {
+          format = "  ";
+          on-click = "''${./scripts/toggle-swaync.sh}";
+          tooltip = true;
+        };
 
         pulseaudio = {
           on-click = "pavucontrol";
@@ -53,9 +61,28 @@
           tooltip-format = "{ifname} via {gwaddr}/{cidr}";
           format-linked = "{ifname} (No IP)";
           format-disconnected = "Disconnected ⚠";
-          format-wifi = "{essid} ({signalStrength}%) ";
+          format-wifi = "";
+          format-alt = "{essid} ({signalStrength}%) ";
           on-click = "nm-connection-editor";
         };
+
+        battery = {
+          format = "{icon}";
+          format-alt = "{capacity}%";
+          format-icons = [ "" "" "" "" "" ];
+        };
+
+        "mpris" = {
+          format = "{player_icon} {artist} - {title}";
+          format-stopped = "";
+          player-icons = {
+            default = "▶";
+            mpv = "🎵";
+          };
+          max-length = 20;
+        };
+
+
 
         "custom/power" = {
           format = " ";
