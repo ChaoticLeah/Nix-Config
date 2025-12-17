@@ -70,7 +70,7 @@
   # networking.firewall.enable = false;
 
   home-manager = {
-    backupFileExtension = ".bak";
+    backupFileExtension = "hm-backup";
     #extraSpecialArgs = { inherit inputs; };
     users = {
       "leah" = import ../../modules/home.nix;

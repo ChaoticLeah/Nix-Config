@@ -13,6 +13,7 @@
     ./home/rofi.nix
     ./home/syncthing.nix
     ./home/waybar/waybar.nix
+    ./home/programs/firefox.nix
   ];
 
   # set cursor size and dpi for 4k monitor
@@ -36,6 +37,7 @@
     networkmanagerapplet
     networkmanager
     kdePackages.plasma-nm
+    kdePackages.plasma-browser-integration
 
     vlc
     lutris

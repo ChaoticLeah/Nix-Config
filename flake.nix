@@ -22,6 +22,11 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    firefox-addons = {
+      url = "gitlab:ChaoticLeah/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -43,6 +48,7 @@
             home-manager.extraSpecialArgs = {
               inherit (config.networking) hostName;
               sopsFile = "/etc/nixos/secrets.yaml";
+              inherit inputs;
             };
           }
         )
