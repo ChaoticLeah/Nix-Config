@@ -212,8 +212,7 @@
             shadow_size = 3;
             shadow_color = "rgba(0, 0, 0, 1.0)";
             shadow_boost = 1.200000;
-
-            position = "0, 120";
+            position = "0, 100";
             halign = "center";
             valign = "center";
           }
@@ -228,7 +227,6 @@
             shadow_size = 3;
             shadow_color = "rgba(0, 0, 0, 1.0)";
             shadow_boost = 1.200000;
-
             position = "0, -160";
             halign = "center";
             valign = "center";
