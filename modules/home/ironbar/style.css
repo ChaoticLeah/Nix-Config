@@ -1,0 +1,229 @@
+/*
+    Ironbar GTK CSS (GTK4)
+
+    About “nesting”:
+    - Ironbar styling is GTK CSS, not a browser engine.
+    - GTK CSS does NOT support modern CSS nesting syntax.
+    - So we keep everything strictly valid GTK CSS, but structure the file
+        in a “nested-like” way via sections and consistent selector prefixes.
+
+    Ironbar selectors to know:
+    - .background, #bar, #bar #start, #bar #center, #bar #end
+*/
+
+@define-color text_color #EBFFD9;
+@define-color pill_bg rgb(44, 57, 48);
+@define-color highlight_bg rgb(83, 110, 92);
+@define-color warning_color rgb(235, 223, 171);
+@define-color error_color rgb(248, 147, 139);
+@define-color charging_color #8AE234;
+
+/* -------------------------------------------------------------------------- */
+/* Base                                                                        */
+/* -------------------------------------------------------------------------- */
+
+* {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background-image: none;
+    font-family: "Symbols Nerd Font", "Font Awesome 6 Free", "Font Awesome 5 Brands", monospace;
+    font-size: 13px;
+    color: @text_color;
+}
+
+window/*#ironbar */ {
+    background-color: transparent;
+}
+/* -------------------------------------------------------------------------- */
+/* Kill backgrounds on interactive elements                                     */
+/* -------------------------------------------------------------------------- */
+
+/* Many GTK widgets draw state backgrounds (hover/active/focus) by default.
+   We want the bar to be “text/icons only”, and keep backgrounds only on the
+   outer pill containers (#bar #start/#end and the .workspaces pill).
+*/
+
+/* button,
+button:hover,
+button:active,
+button:checked,
+button:focus,
+button:focus-visible,
+button:backdrop,
+.item,
+.item:hover,
+.item:active,
+.item:checked,
+.item:focus,
+.item:focus-visible {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+} */
+
+
+
+/* -------------------------------------------------------------------------- */
+/* Root / containers (transparent bar background)                               */
+/* -------------------------------------------------------------------------- */
+/* 
+.background,
+#bar {
+    background-color: rgba(0, 0, 0, 0);
+} */
+
+/* -------------------------------------------------------------------------- */
+/* Group “pills” (start/end containers)                                         */
+/* -------------------------------------------------------------------------- */
+
+/* Think of this like:
+         #bar {
+             #start { ... }
+             #end   { ... }
+         }
+     …but written as valid GTK CSS.
+*/
+
+#bar #start,
+#bar #end {
+    background-color: @pill_bg;
+    border-radius: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 1px;
+}
+
+.widget-container {
+	background-color: @pill_bg;
+}
+
+#bar #start {
+    margin-left: 5px;
+}
+
+#bar #end {
+    margin-right: 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Common module spacing (compact)                                              */
+/* -------------------------------------------------------------------------- */
+
+/* Think of this like:
+         #bar {
+             .workspaces, .music, ... { padding: ... }
+         }
+*/
+
+.workspaces,
+.music,
+.tray,
+.label,
+.notifications,
+.volume,
+.network_manager,
+.battery,
+.clock {
+    padding: 0 3px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Workspaces                                                                  */
+/* -------------------------------------------------------------------------- */
+
+.workspaces {
+    background-color: @pill_bg;
+    border-radius: 10px;
+    margin: 2px 0 2px 5px;
+    padding: 1px;
+}
+
+/* Think of this like:
+         .workspaces {
+             button { ... }
+             button:hover { ... }
+             button.focused { ... }
+         }
+*/
+
+.workspaces button {
+    padding: 1px 4px;
+    background-color: transparent;
+}
+
+.workspaces button:hover {
+    background-color: transparent;
+}
+
+.workspaces button.focused {
+    background-color: transparent;
+    /* If you still want a focused indicator without a background,
+       uncomment one of these:
+       border-bottom: 2px solid @warning_color;
+       color: @warning_color;
+    */
+}
+
+/* -------------------------------------------------------------------------- */
+/* Individual module tweaks                                                     */
+/* -------------------------------------------------------------------------- */
+
+#power {
+    border-radius: 100%;
+    margin: 5px;
+    padding: 0 0 0 5px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* State indicators                                                             */
+/* -------------------------------------------------------------------------- */
+
+.volume.muted {
+    color: @error_color;
+}
+
+.battery.warning:not(.charging) {
+    color: @warning_color;
+}
+
+.battery.critical:not(.charging) {
+    color: @error_color;
+}
+
+.battery.charging {
+    color: @charging_color;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tray (tight spacing between icons)                                           */
+/* -------------------------------------------------------------------------- */
+
+/* Think of this like:
+         .tray {
+             .item { ... }
+             .item:first-child { ... }
+             .item:last-child { ... }
+         }
+*/
+
+.tray {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.tray .item {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Avoid a leading gap on the first icon */
+.tray .item:first-child {
+    margin-left: 0;
+}
+
+.tray .item:last-child {
+    margin-right: 0;
+}

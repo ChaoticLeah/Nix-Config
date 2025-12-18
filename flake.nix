@@ -36,6 +36,11 @@
       nixpkgs-stable,
       ...
     }@inputs:
+    let 
+      globals = {
+        user = "leah";
+      };
+    in
     {
       commonModules = [
         inputs.nixvim.nixosModules.nixvim
@@ -48,7 +53,7 @@
             home-manager.extraSpecialArgs = {
               inherit (config.networking) hostName;
               sopsFile = "/etc/nixos/secrets.yaml";
-              inherit inputs;
+              inherit inputs globals;
             };
           }
         )
@@ -58,7 +63,7 @@
 
       nixosConfigurations = {
         hyprleah = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs globals; };
           modules = self.commonModules ++ [
             ./hosts/leah/config.nix
             (
@@ -72,7 +77,7 @@
 
         smolleah = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs;
+            inherit inputs globals;
             inherit nixpkgs-stable;
           };
           modules = self.commonModules ++ [
@@ -87,7 +92,7 @@
         };
         server-nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs;
+            inherit inputs globals;
             inherit nixpkgs-stable;
           };
           modules = self.commonModules ++ [

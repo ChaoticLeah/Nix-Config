@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, globals, pkgs, ... }:
 
 {
   imports = [
@@ -24,7 +24,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.leah = {
+  users.users.${globals.user} = {
     isNormalUser = true;
     description = "leah";
     extraGroups = [

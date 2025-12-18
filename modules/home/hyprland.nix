@@ -56,7 +56,7 @@
         "swaynotificationcenter"
         "systemctl --user start hyprpolkitagent"
         #"swww-daemon" - Could also be used for wallpapers?
-        "waybar"
+        # "waybar"
         "kdeconnect-indicator"
         "nm-applet"
         "hyprpaper"

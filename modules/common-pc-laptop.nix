@@ -52,7 +52,6 @@ in
       hyprpaper
       rofi-power-menu
       overskride
-      firefox
       librewolf
       kitty
       hyprshot

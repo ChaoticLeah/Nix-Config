@@ -38,6 +38,7 @@
     networkmanager
     kdePackages.plasma-nm
     kdePackages.plasma-browser-integration
+    playerctl
 
     vlc
     lutris

@@ -26,11 +26,11 @@
         ];
 
         modules-right = [
+          "mpris"
           "tray"
           "custom/swaync"
           "pulseaudio"
           "network"
-          "mpris"
           "battery"
           "clock"
           "custom/power"
@@ -73,12 +73,16 @@
         };
 
         "mpris" = {
-          format = "{player_icon} {artist} - {title}";
+          format = "{status_icon} {artist} - {title}";
           format-stopped = "";
-          player-icons = {
-            default = "▶";
-            mpv = "🎵";
+          status-icons = {
+            "playing" = "  ▶";
+            "paused" = "  ⏸";
           };
+          player-icons = {
+            default = "🎵";
+          };
+          on-click = "playerctl play-pause";
           max-length = 20;
         };
 
