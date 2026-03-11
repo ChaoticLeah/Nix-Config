@@ -58,6 +58,9 @@
     variant = "";
   };
 
+  # Required for Home Manager dconf activation (ca.desrt.dconf DBus service)
+  programs.dconf.enable = true;
+
   programs.java = {
     enable = true;
     package = pkgs.openjdk17;
@@ -81,7 +84,8 @@
     # Cleanup old generations
     nix-gc = "sudo nix-collect-garbage -d";
     v = "nvim .";
-    edit-secrets = "sudo SOPS_AGE_KEY_FILE=/etc/age/keys.txt sops /etc/nixos/secrets.yaml";
+    edit-secrets = "sudo SOPS_AGE_KEY_FILE=/etc/age/keys.txt sops ./secrets.yaml";
+    hytale = "sudo nixos-rebuild switch --flake .#smolleah";
   };
 
   nix.gc.automatic = true;

@@ -23,9 +23,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-addons = {
-      url = "gitlab:ChaoticLeah/nur-expressions?dir=pkgs/firefox-addons";
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    mango = {
+      url = "github:DreamMaoMao/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    wifitui = {
+      url = "github:shazow/wifitui";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs =
@@ -33,11 +45,14 @@
       self,
       nixpkgs,
       nixpkgs-stable,
+      nixos-cosmic,
       ...
     }@inputs:
     let 
+      secretsFile = ./secrets.yaml;
       globals = {
         user = "leah";
+        inherit secretsFile;
       };
     in
     {
@@ -45,15 +60,19 @@
         inputs.nixvim.nixosModules.nixvim
         inputs.home-manager.nixosModules.home-manager
         inputs.sops-nix.nixosModules.sops
+        inputs.mango.nixosModules.mango
 
         (
           { config, ... }:
           {
             home-manager.extraSpecialArgs = {
               inherit (config.networking) hostName;
-              sopsFile = "/etc/nixos/secrets.yaml";
               inherit inputs globals;
             };
+
+            home-manager.sharedModules = [
+              inputs.sops-nix.homeManagerModules.sops
+            ];
           }
         )
 
@@ -62,7 +81,10 @@
 
       nixosConfigurations = {
         hyprleah = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs globals; };
+          specialArgs = {
+            inherit inputs globals;
+            inherit nixpkgs-stable;
+          };
           modules = self.commonModules ++ [
             ./hosts/leah/config.nix
             (

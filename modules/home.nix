@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, globals, inputs, ... }:
 
 {
   # TODO please change the username & home directory to your own
@@ -8,13 +8,24 @@
   imports = builtins.filter (x: x != null) [
     ./home/git.nix
     ./home/terminal.nix
-    ./home/hyprland.nix
+    ./home/mango.nix
+    #./home/hyprland.nix
     ./home/gnome-settings.nix
     ./home/rofi.nix
     ./home/syncthing.nix
-    ./home/waybar/waybar.nix
+    #./home/waybar/waybar.nix
     ./home/programs/firefox.nix
+    #./home/programs/games/roblox.nix
+    ./home/weechat.nix
+    inputs.mango.hmModules.mango
   ];
+
+  sops = {
+    secrets.znc_password = { };
+
+    age.keyFile = "/etc/age/keys.txt";
+    defaultSopsFile = globals.secretsFile;
+  };
 
   # set cursor size and dpi for 4k monitor
   xresources.properties = {
@@ -33,6 +44,8 @@
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     swaynotificationcenter
+    swaybg
+    lxqt.lxqt-policykit
     udiskie
     networkmanagerapplet
     networkmanager

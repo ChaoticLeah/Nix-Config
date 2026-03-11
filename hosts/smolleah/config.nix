@@ -17,9 +17,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # More work stuff ahhhh
-  services.n8n.enable = true;
-
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -33,10 +30,13 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "dialout"
+      "plugdev"
     ];
     packages = with pkgs; [
       vesktop
       lmstudio
+      platformio-core
     ];
   };
 
@@ -62,6 +62,13 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  # Lock session when laptop lid closes.
+  services.logind.settings.Login = {
+    HandleLidSwitch = "lock";
+    HandleLidSwitchExternalPower = "lock";
+    HandleLidSwitchDocked = "ignore";
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

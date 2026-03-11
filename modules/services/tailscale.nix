@@ -11,12 +11,12 @@ in
     description = "Automatic connection to Tailscale";
 
     after = [
-      "network-pre.target"
-      "tailscale.service"
+      "network-online.target"
+      "tailscaled.service"
     ];
     wants = [
-      "network-pre.target"
-      "tailscale.service"
+      "network-online.target"
+      "tailscaled.service"
     ];
     wantedBy = [ "multi-user.target" ];
 
@@ -29,16 +29,29 @@ in
       export HOME=/root
 
       # wait for tailscaled to settle
-      sleep 2
+      for _ in $(seq 1 10); do
+        if ${pkgs.tailscale}/bin/tailscale status -json >/dev/null 2>&1; then
+          break
+        fi
+        sleep 1
+      done
 
-      status="$(${pkgs.tailscale}/bin/tailscale status -json | ${pkgs.jq}/bin/jq -r .BackendState)"
+      status="$(${pkgs.tailscale}/bin/tailscale status -json 2>/dev/null | ${pkgs.jq}/bin/jq -r .BackendState 2>/dev/null || echo "")"
       if [ "$status" = "Running" ]; then
         exit 0
       fi
 
       authkey=tskey-auth-kj2Xo2jp7521CNTRL-FhYAPdKpRu17h8jRD1AHv1sCNBaJ8zKYL
 
-      ${pkgs.tailscale}/bin/tailscale up -authkey "$authkey"
+      if [ -z "$authkey" ] || [ "$authkey" = "null" ]; then
+        echo "tailscale-autoconnect: tailscale_secret is empty; skipping autoconnect"
+        exit 0
+      fi
+
+      ${pkgs.tailscale}/bin/tailscale up -authkey "$authkey" || {
+        echo "tailscale-autoconnect: tailscale up failed; skipping without failing boot"
+        exit 0
+      }
     '';
   };
 }

@@ -12,16 +12,20 @@ let
 in
 {
   imports = [
+    ./services/pipewire.nix
     ./fonts.nix
     ./games
     ./drawing.nix
     ./services/portals.nix
+    # ./services/znc.nix
   ];
 
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.defaultSession = "mango";
 
-  programs.hyprland.enable = true;
+  # programs.hyprland.enable = true;
+  programs.mango.enable = true;
 
   # networking.wireless.enable  = true;
 
@@ -40,10 +44,15 @@ in
 
   services.blueman.enable = true;
 
+  # VirtualBox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "leah" ];
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages =
     (with pkgs; [
+      pandoc
       lua-language-server
       rust-analyzer
       zig
@@ -58,8 +67,11 @@ in
       libnotify
       pavucontrol
       wl-clipboard
+      wireguard-tools
       rofi
       beeper
+      # wifitui TUI wifi manager (from flake input)
+      (inputs.wifitui.packages.${pkgs.system}.default)
       signal-desktop
       vscode
       feishin
@@ -77,6 +89,10 @@ in
       kdePackages.dolphin
       darktable
       bambu-studio
+      blender
+      heroic
+      weechat
+      znc
 
       #pmount
       #udisks2
@@ -97,5 +113,7 @@ in
   nixpkgs.config.permittedInsecurePackages = [
     "electron-36.9.5"
   ];
+
+  programs.nix-ld.enable = true;
 
 }

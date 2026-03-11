@@ -1,0 +1,4 @@
+{ ... }:
+{
+  programs.vinegar.enable = true;
+}

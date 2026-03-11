@@ -1,12 +1,12 @@
 { pkgs, ... }:
 
 {
-  #dconf.settings = {
-  #  "org/gnome/desktop/interface" = {
-  #    color-scheme = "prefer-dark";
-  #    gtk-theme = "Adwaita-dark";
-  #  };
-  #};
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-theme = "Flat-Remix-GTK-Grey-Darkest";
+    };
+  };
   home.pointerCursor = {
     gtk.enable = true;
     # x11.enable = true;
