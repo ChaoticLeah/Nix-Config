@@ -37,6 +37,14 @@
           "custom/power"
         ];
 
+        "ext/workspaces" = {
+          format = "{icon}";
+          ignore-hidden = true;
+          on-click = "activate";
+          on-click-right = "deactivate";
+          sort-by-id = true;
+        };
+
         "custom/swaync" = {
           format = "  ";
           on-click = "''${./scripts/toggle-swaync.sh}";
@@ -71,6 +79,10 @@
           format = "{icon}";
           format-alt = "{capacity}%";
           format-icons = [ "" "" "" "" "" ];
+        };
+
+        clock = {
+          tooltip-format = "{:%A, %B %d, %Y}";
         };
 
         "mpris" = {

@@ -124,8 +124,8 @@ in{
       # Appearance
       gappih=2
       gappiv=2
-      gappoh=5
-      gappov=5
+      gappoh=2
+      gappov=2
       scratchpad_width_ratio=0.8
       scratchpad_height_ratio=0.9
       borderpx=4
@@ -174,8 +174,13 @@ in{
       bindl=NONE,code:121,spawn,pactl set-sink-mute @DEFAULT_SINK@ toggle
       bindl=NONE,code:122,spawn,pactl set-sink-volume @DEFAULT_SINK@ -5%
       bindl=NONE,code:123,spawn,pactl set-sink-volume @DEFAULT_SINK@ +5%
+      bindl=NONE,XF86AudioLowerVolume,spawn,pactl set-sink-volume @DEFAULT_SINK@ -5%
+      bindl=NONE,XF86AudioRaiseVolume,spawn,pactl set-sink-volume @DEFAULT_SINK@ +5%
       bind=NONE,code:107,spawn,${pkgs.lib.getExe pkgs.hyprshot}  --clipboard-only -z -m region
       bind=${mod}+SHIFT,s,spawn,${pkgs.lib.getExe pkgs.hyprshot} --clipboard-only -z -m region
+
+      # Lid switch actions
+      switchbind=fold,spawn,${pkgs.lib.getExe config.programs.hyprlock.package}
 
       # exit
       bind=${mod},m,quit
@@ -224,7 +229,7 @@ in{
       # tagsilent: move client to the tag and not focus it
       ${lib.concatStringsSep "\n" (lib.concatMap (num: [
         "bind=${mod},${toString num},view,${toString num},0"
-        "bind=${mod}+Ctrl,${toString num},tag,${toString num},0"
+        "bind=${mod}+Shift,${toString num},tag,${toString num},0"
       ]) [1 2 3 4 5 6 7 8 9])}
 
       # monitor switch

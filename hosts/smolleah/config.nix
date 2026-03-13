@@ -65,8 +65,8 @@
 
   # Lock session when laptop lid closes.
   services.logind.settings.Login = {
-    HandleLidSwitch = "lock";
-    HandleLidSwitchExternalPower = "lock";
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
     HandleLidSwitchDocked = "ignore";
   };
 

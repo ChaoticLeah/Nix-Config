@@ -1,57 +1,32 @@
-{ pkgs, ... }:
-
-let
-  secretsFile = "/etc/nixos/secrets.yaml";
-  ageKeyFile = "/etc/age/keys.txt";
-in
+{ pkgs, config, ... }:
 {
   services.tailscale.enable = true;
+
+  sops.secrets."tailscale_secret" = { };
 
   systemd.services.tailscale-autoconnect = {
     description = "Automatic connection to Tailscale";
 
-    after = [
-      "network-online.target"
-      "tailscaled.service"
-    ];
-    wants = [
-      "network-online.target"
-      "tailscaled.service"
-    ];
+    after = [ "network-pre.target" "tailscale.service" "sops-install-secrets.service" ];
+    wants = [ "network-pre.target" "tailscale.service" "sops-install-secrets.service" ];
     wantedBy = [ "multi-user.target" ];
 
-    serviceConfig = {
-      Type = "oneshot";
-      Environment = "SOPS_AGE_KEY_FILE=${ageKeyFile}";
-    };
+    serviceConfig.Type = "oneshot";
 
     script = ''
       export HOME=/root
 
       # wait for tailscaled to settle
-      for _ in $(seq 1 10); do
-        if ${pkgs.tailscale}/bin/tailscale status -json >/dev/null 2>&1; then
-          break
-        fi
-        sleep 1
-      done
+      sleep 2
 
-      status="$(${pkgs.tailscale}/bin/tailscale status -json 2>/dev/null | ${pkgs.jq}/bin/jq -r .BackendState 2>/dev/null || echo "")"
+      status="$(${pkgs.tailscale}/bin/tailscale status -json | ${pkgs.jq}/bin/jq -r .BackendState)"
       if [ "$status" = "Running" ]; then
         exit 0
       fi
 
-      authkey=tskey-auth-kj2Xo2jp7521CNTRL-FhYAPdKpRu17h8jRD1AHv1sCNBaJ8zKYL
+      authkey="$(${pkgs.coreutils}/bin/tr -d '\r\n' < ${config.sops.secrets."tailscale_secret".path})"
 
-      if [ -z "$authkey" ] || [ "$authkey" = "null" ]; then
-        echo "tailscale-autoconnect: tailscale_secret is empty; skipping autoconnect"
-        exit 0
-      fi
-
-      ${pkgs.tailscale}/bin/tailscale up -authkey "$authkey" || {
-        echo "tailscale-autoconnect: tailscale up failed; skipping without failing boot"
-        exit 0
-      }
+      ${pkgs.tailscale}/bin/tailscale up -authkey "$authkey"
     '';
   };
 }
